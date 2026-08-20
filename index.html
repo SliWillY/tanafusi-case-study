@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="دراسة حالة عربية لمشروع تنافسي: نموذج أولي لنظام تحفيزي صُمم وبُني لبرنامج صيفي من أربعة أسابيع.">
+  <meta property="og:title" content="تنافسي: من تجربة تحفيزية قصيرة إلى نظام تقدم يمتلكه الطالب">
+  <meta property="og:description" content="كيف تحولت فرضية سلوكية إلى نظام رصد وتحفيز قابل للاستخدام والقياس؟">
+  <title>تنافسي | دراسة حالة في تصميم الأنظمة والتلعيب</title>
+  <style>
+    :root {
+      --ink: #111318;
+      --muted: #667085;
+      --paper: #fbfbfd;
+      --surface: #ffffff;
+      --line: #d9dce3;
+      --purple: #5e17eb;
+      --blue: #3d8dff;
+      --green: #16a34a;
+      --orange: #f59e0b;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Tahoma, Arial, sans-serif;
+      line-height: 1.8;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .eyebrow { color: var(--purple); font-weight: 700; letter-spacing: .02em; }
+    .hero { padding: 92px 0 48px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 52px; align-items: center; }
+    h1 { font-size: clamp(42px, 6vw, 78px); line-height: 1.13; margin: 12px 0 22px; letter-spacing: -.035em; }
+    h2 { font-size: clamp(30px, 4vw, 48px); line-height: 1.25; margin: 0 0 20px; }
+    h3 { font-size: 22px; line-height: 1.45; margin: 0 0 8px; }
+    p { margin: 0 0 18px; }
+    .lead { color: #333846; font-size: clamp(19px, 2.2vw, 25px); max-width: 740px; }
+    .hero-shot { position: relative; padding: 18px 18px 0 0; }
+    .hero-shot::before { content: ""; position: absolute; inset: 0 0 16% 15%; background: var(--purple); z-index: -1; }
+    .hero-shot img { border: 1px solid #c7cad1; box-shadow: 0 30px 65px rgba(31, 26, 46, .18); }
+    .facts { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 64px; }
+    .fact { padding: 24px 18px; border-inline-start: 1px solid var(--line); }
+    .fact:first-child { border-inline-start: 0; }
+    .fact small { display: block; color: var(--muted); margin-bottom: 6px; }
+    section { padding: 84px 0; }
+    .section-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 72px; }
+    .section-label { color: var(--purple); font-weight: 700; }
+    .statement { font-size: clamp(28px, 4vw, 46px); line-height: 1.45; font-weight: 700; margin: 0; }
+    .soft { background: #f0f1f5; }
+    .dark { background: #12141a; color: #fff; }
+    .dark .muted { color: #b8becb; }
+    .system-flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; direction: rtl; margin-top: 38px; }
+    .flow-step { min-height: 160px; padding: 22px 18px; border: 1px solid #aeb3be; border-inline-start: 0; background: var(--surface); position: relative; }
+    .flow-step:first-child { border-inline-start: 1px solid #aeb3be; }
+    .flow-step::after { content: "←"; position: absolute; inset-inline-end: -12px; top: 50%; transform: translateY(-50%); width: 24px; text-align: center; background: var(--surface); font-weight: 700; }
+    .flow-step:last-child::after { display: none; }
+    .flow-number { font-size: 36px; font-weight: 700; color: var(--purple); line-height: 1; margin-bottom: 28px; }
+    .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 42px; }
+    figure { margin: 0; background: var(--surface); border: 1px solid var(--line); }
+    figure img { aspect-ratio: 16/10.6; width: 100%; object-fit: cover; object-position: top; }
+    figcaption { padding: 16px 18px 18px; color: var(--muted); font-size: 14px; }
+    .decision-list { border-top: 1px solid var(--line); }
+    .decision { display: grid; grid-template-columns: 80px 1fr 1.5fr; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--line); align-items: start; }
+    .decision-index { color: var(--purple); font-size: 30px; font-weight: 700; }
+    .decision p { color: var(--muted); }
+    .journeys { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 32px; }
+    .journey { padding-top: 24px; border-top: 4px solid var(--blue); }
+    .journey:nth-child(2) { border-top-color: var(--purple); }
+    .journey ol { padding: 0 22px 0 0; margin: 18px 0 0; }
+    .evidence { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #3a3d45; margin-top: 34px; }
+    .evidence-item { background: #171a21; padding: 34px; min-height: 210px; }
+    .evidence-item strong { display: block; font-size: 40px; color: #fff; margin-bottom: 12px; }
+    .evidence-item span { color: #bec4d0; }
+    .limits { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+    .limits > div { padding-top: 24px; border-top: 1px solid var(--ink); }
+    .future-map { margin-top: 44px; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 20px; align-items: center; }
+    .future-node { min-height: 180px; padding: 28px; background: #fff; color: var(--ink); border: 1px solid #fff; }
+    .future-node.core { background: var(--purple); color: #fff; }
+    .arrow { font-size: 34px; color: #9ea4b1; }
+    .closing { text-align: center; padding: 110px 0; }
+    .closing p { max-width: 760px; margin: 0 auto 26px; font-size: 21px; color: #444a57; }
+    .cta { display: inline-block; padding: 14px 24px; background: var(--ink); color: #fff; text-decoration: none; font-weight: 700; }
+    .privacy-note { margin-top: 28px; padding: 18px 22px; border-inline-start: 4px solid var(--green); background: #edf9f0; color: #285d36; }
+    @media (max-width: 900px) {
+      .hero-grid, .section-grid, .limits { grid-template-columns: 1fr; gap: 30px; }
+      .facts { grid-template-columns: 1fr 1fr; }
+      .fact { border-bottom: 1px solid var(--line); }
+      .system-flow { grid-template-columns: 1fr 1fr; }
+      .flow-step { border: 1px solid #aeb3be; }
+      .flow-step::after { display: none; }
+      .future-map { grid-template-columns: 1fr; }
+      .arrow { transform: rotate(-90deg); text-align: center; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 24px, var(--max)); }
+      .hero { padding-top: 54px; }
+      .facts, .gallery, .journeys, .evidence { grid-template-columns: 1fr; }
+      .system-flow { grid-template-columns: 1fr; }
+      .decision { grid-template-columns: 54px 1fr; }
+      .decision p { grid-column: 2; }
+      section { padding: 62px 0; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">دراسة حالة · Product Design · Gamification</div>
+          <h1>تنافسي: من تجربة تحفيزية قصيرة إلى نظام تقدم يمتلكه الطالب</h1>
+          <p class="lead">نموذج أولي صممته وبنيته لاختبار كيف تتحول فرضية سلوكية إلى تجربة قابلة للاستخدام والقياس داخل برنامج صيفي مدته أربعة أسابيع.</p>
+        </div>
+        <div class="hero-shot">
+          <img src="assets/screenshots/07-student-dashboard.webp" alt="لوحة طالب تجريبية تعرض المستوى والتقدم والترتيب في نظام تنافسي">
+        </div>
+      </div>
+      <div class="wrap facts" aria-label="معلومات المشروع">
+        <div class="fact"><small>المدة</small><strong>4 أسابيع</strong></div>
+        <div class="fact"><small>الحالة</small><strong>نموذج أولي</strong></div>
+        <div class="fact"><small>الدور</small><strong>End-to-end</strong></div>
+        <div class="fact"><small>الجمهور</small><strong>طلاب ومشرفون</strong></div>
+        <div class="fact"><small>المنصة</small><strong>تطبيق ويب</strong></div>
+      </div>
+    </header>
+
+    <section>
+      <div class="wrap section-grid">
+        <div class="section-label">01 · السؤال</div>
+        <div>
+          <h2>كيف نبدأ المشاركة عندما تكون مدة التجربة قصيرة جدًا؟</h2>
+          <p>لم يكن التحدي اضافة نقاط وشارات، بل تصميم نظام يجعل الرصد اليومي والتقدم الفردي والانتماء للفريق جزء من تجربة واحدة.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft">
+      <div class="wrap section-grid">
+        <div class="section-label">02 · الفرضية</div>
+        <div>
+          <h2>المكافأة تبدأ الحركة، والانتماء يمنحها معنى اجتماعيًا</h2>
+          <p>خلال أربعة أسابيع، استخدمت المكافآت الخارجية والتغذية الفورية كبداية عملية. لم أتعامل معها كحل دائم، بل كطبقة أولى فوق تجربة ركزت على الانتماء: طالب داخل فريق، وفريق داخل كلان، وتقدم فردي يؤثر في جماعته.</p>
+          <p>الهدف التالي هو نقل مركز النظام تدريجيًا نحو الكفاءة والإتقان والاستقلالية، بحيث يصبح الطالب اكثر قدرة على فهم تقدمه واختيار مساره.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-label">03 · تصميم النظام</div>
+        <h2>حلقة تحفيز تبدأ من فعل يومي وتنتهي بصورة أوضح للتقدم</h2>
+        <div class="system-flow" aria-label="خريطة تدفق نظام تنافسي">
+          <div class="flow-step"><div class="flow-number">01</div><h3>فعل يومي</h3><p>حضور، تسميع أو مشاركة.</p></div>
+          <div class="flow-step"><div class="flow-number">02</div><h3>رصد مرن</h3><p>فئات وخيارات يحددها البرنامج.</p></div>
+          <div class="flow-step"><div class="flow-number">03</div><h3>تغذية راجعة</h3><p>نقاط وعملات وسلسلة استمرارية.</p></div>
+          <div class="flow-step"><div class="flow-number">04</div><h3>تقدم فردي</h3><p>مستوى وتحليلات وسجل نشاط.</p></div>
+          <div class="flow-step"><div class="flow-number">05</div><h3>انتماء جماعي</h3><p>فرق وكلانات وترتيب عادل.</p></div>
+          <div class="flow-step"><div class="flow-number">06</div><h3>اختيار ومكافأة</h3><p>متجر وتخصيص ورؤية مستقبلية.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft">
+      <div class="wrap">
+        <div class="section-label">04 · الرحلات الأساسية</div>
+        <h2>واجهتان مختلفتان تتشاركان النظام نفسه</h2>
+        <div class="journeys">
+          <div class="journey">
+            <h3>رحلة المشرف</h3>
+            <ol><li>اختيار اليوم والفئة.</li><li>رصد مجموعة كبيرة بسرعة.</li><li>حفظ التغييرات دون فقدان العمل.</li><li>قراءة التحليلات والاستثناءات.</li></ol>
+          </div>
+          <div class="journey">
+            <h3>رحلة الطالب</h3>
+            <ol><li>فهم المستوى والسلسلة.</li><li>رؤية أثر النشاط في الفريق.</li><li>مقارنة التقدم دون اختزاله في ترتيب فقط.</li><li>استخدام العملات واختيار المكافآت.</li></ol>
+          </div>
+        </div>
+        <div class="gallery">
+          <figure><img src="assets/screenshots/02-daily-logging.webp" alt="صفحة الرصد اليومي ببيانات طلاب تجريبية"><figcaption>الرصد اليومي: كثافة تشغيلية عالية مع فئات قابلة للإعداد.</figcaption></figure>
+          <figure><img src="assets/screenshots/03-student-analytics.webp" alt="تحليلات رصد طالب تجريبي داخل صفحة الإدارة"><figcaption>التحليلات: توزيع بصري للفئات والخيارات والأيام غير المرصودة.</figcaption></figure>
+          <figure><img src="assets/screenshots/04-admin-leaderboards.webp" alt="ترتيب الطلاب والفرق والكلانات في لوحة الإدارة"><figcaption>الترتيب متعدد المستويات: فرد، فريق، وكلان.</figcaption></figure>
+          <figure><img src="assets/screenshots/06-admin-chat.webp" alt="واجهة محادثة الكلانات للإدارة ببيانات تجريبية"><figcaption>المحادثات: مساحة للانتماء والتواصل داخل كل مجموعة.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap section-grid">
+        <div class="section-label">05 · قرارات التصميم</div>
+        <div class="decision-list">
+          <div class="decision"><div class="decision-index">01</div><h3>العدل قبل الترتيب</h3><p>يتم توازن نقاط الفرق والكلانات حسب عدد الأعضاء المؤهلين في اليوم، ويستبعد الغياب بعذر من حساب المجموعة دون إلغاء سجل الطالب الشخصي.</p></div>
+          <div class="decision"><div class="decision-index">02</div><h3>الرصد قابل للتكيف</h3><p>يحدد كل برنامج فئاته وخياراته وألوانه وقيمه بدل فرض تعريف واحد للنجاح على جميع السياقات.</p></div>
+          <div class="decision"><div class="decision-index">03</div><h3>الخصوصية افتراضيا</h3><p>لا يحتاج النموذج اي من بيانات الطالب سوى الاسم فقط, مثل بريد الطالب أو بيانات حساسة. الحسابات بسيطة.</p></div>
+          <div class="decision"><div class="decision-index">04</div><h3>نظامان اقتصاديان</h3><p>تفصل النقاط التقدم والترتيب عن العملات القابلة للصرف، حتى لا يؤدي شراء المكافأة إلى خفض مستوى الطالب.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark">
+      <div class="wrap">
+        <div class="section-label">06 · التنفيذ</div>
+        <h2>من فرضية سلوكية إلى نموذج ويب يعمل فعليًا</h2>
+        <p class="muted">بنيت النظام باستخدام Flask وPostgreSQL وJavaScript، مع عزل بيانات كل برنامج، ورصد وتحليلات، ومحادثات فورية، ومتجر، ومستويات وسلاسل استمرارية. لم يكن الهدف إظهار أكبر عدد من الميزات، بل اختبار الترابط بين القرارات السلوكية والتشغيلية.</p>
+        <div class="evidence">
+          <div class="evidence-item"><strong>4 أسابيع</strong><span>قيد زمني شكّل استراتيجية التحفيز.</span></div>
+          <div class="evidence-item"><strong>دور فردي</strong><span>بحث، تصميم نظام، UX، تنفيذ واختبار.</span></div>
+          <div class="evidence-item"><strong>بيانات آمنة</strong><span>لا بريد الكتروني أو بيانات حساسة للطالب وللمسؤوول.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap section-grid">
+        <div class="section-label">07 · التعلم والحدود</div>
+        <div>
+          <h2>النموذج يثبت قابلية الفكرة للتجربة، لا أثرها التعليمي طويل المدى</h2>
+          <div class="limits">
+            <div><h3>ما تعلمته</h3><p>التحفيز الخارجي والانتماء يخلقان نقطة دخول واضحة. كما أن العدالة وجودة أدوات المشرف جزء من تجربة التحفيز، وليستا مشكلة خلفية.</p></div>
+            <div><h3>ما لم يتم اختباره بعد</h3><p>الاستدامة بعد انتهاء المكافآت، أثر النظام في التعلم، ودور الاستقلالية والاختيار عبر مدة أطول ومؤسسات متعددة.</p></div>
+          </div>
+          <div class="privacy-note">لم أدرج أرقام أثر أو شهادات غير موثقة. تُضاف نتائج الاستخدام فقط بعد التحقق من تعريفها والحصول على الموافقات المناسبة.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark">
+      <div class="wrap">
+        <div class="section-label">08 · الرؤية المستقبلية</div>
+        <h2>التقدم يجب أن يتبع الطالب، لا المؤسسة</h2>
+        <p class="muted">بدل أن يبدأ الطالب من الصفر مع كل مدرسة أو برنامج، يمتلك حساب وهوية تقدم واحدة. تنضم المؤسسات إلى هذه الهوية وتضيف سياقات تعلم مختلفة، بينما تتحول الإنجازات إلى شخصية ومساحة رقمية قابلة للتخصيص.</p>
+        <div class="future-map" aria-label="تصور مستقبل نظام تنافسي">
+          <div class="future-node"><h3>برامج متعددة</h3><p>مدرسة، برنامج قرآن، نادي أو نشاط قصير.</p></div>
+          <div class="arrow">←</div>
+          <div class="future-node core"><h3>هوية الطالب</h3><p>تقدم محمول وسجل مفهوم للإنجازات.</p></div>
+          <div class="arrow">←</div>
+          <div class="future-node"><h3>عالم شخصي</h3><p>شخصية ومنزل وتخصيص يبني ارتباطًا طويل المدى.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft">
+      <div class="wrap">
+        <div class="section-label">09 · التجربة البصرية</div>
+        <h2>التقدم الفردي والجماعي يظهران في مساحة واحدة</h2>
+        <div class="gallery">
+          <figure><img src="assets/screenshots/08-student-leaderboard.webp" alt="واجهة ترتيب الطلاب والكلانات من منظور الطالب"><figcaption>المقارنة ليست فردية فقط؛ تظهر الجماعة والهوية الاجتماعية.</figcaption></figure>
+          <figure><img src="assets/screenshots/05-clans-and-squads.webp" alt="إدارة الكلانات والفرق في نظام تنافسي"><figcaption>هيكل كلان وفريق يترجم الانتماء إلى بنية تشغيلية.</figcaption></figure>
+          <figure><img src="assets/screenshots/09-student-store.webp" alt="متجر المكافآت في حساب طالب تجريبي"><figcaption>العملات تمنح مساحة للاختيار دون خفض نقاط التقدم.</figcaption></figure>
+          <figure><img src="assets/screenshots/10-student-clans.webp" alt="دليل الكلانات والفرق من حساب طالب تجريبي"><figcaption>عرض المجتمع يساعد الطالب على فهم مكانه داخل النظام.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <footer class="closing">
+      <div class="wrap">
+        <div class="eyebrow">الخلاصة</div>
+        <h2>هذا المشروع يوضح كيف أفكر في الأنظمة، لا كيف أزين الواجهات فقط</h2>
+        <p>تعلمت في هذا المشروع عن Product Design وUX وتصميم الأنظمة والتلعيب، حيث يمكن تحويل فهم الدوافع البشرية إلى منتجات عملية ومسؤولة.</p>
+      </div>
+    </footer>
+  </main>
+  <!-- أضف اقتباسين موثقين هنا فقط بعد إخفاء الهوية والحصول على موافقة النشر. -->
+</body>
+
+<footer>
+  <p style="text-align: center;">© 2026 سلمان سيف نظري. جميع الحقوق محفوظة.</p>
+</footer>
+</html>
