@@ -33,7 +33,8 @@
     a { color: inherit; }
     .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
     .eyebrow { color: var(--purple); font-weight: 700; letter-spacing: .02em; }
-    .hero { padding: 92px 0 48px; overflow: hidden; }
+    .hero { padding: 24px 0 48px; overflow: hidden; }
+    .topbar { display: flex; justify-content: flex-end; margin-bottom: 30px; }
     .hero-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 52px; align-items: center; }
     h1 { font-size: clamp(42px, 6vw, 78px); line-height: 1.13; margin: 12px 0 22px; letter-spacing: -.035em; }
     h2 { font-size: clamp(30px, 4vw, 48px); line-height: 1.25; margin: 0 0 20px; }
@@ -86,7 +87,7 @@
     html[dir="ltr"] .arrow::before, html[dir="ltr"] .flow-step::after { content: "→"; }
     html[lang="en"] body { font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; line-height: 1.65; }
     html[lang="en"] h1 { letter-spacing: -.025em; }
-    .lang-toggle { position: fixed; top: 16px; inset-inline-end: 16px; z-index: 10; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, .92); color: var(--ink); font: inherit; font-size: 14px; font-weight: 700; line-height: 1.4; cursor: pointer; box-shadow: 0 6px 18px rgba(31, 26, 46, .08); backdrop-filter: blur(6px); }
+    .lang-toggle { padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; font-weight: 700; line-height: 1.4; cursor: pointer; }
     .lang-toggle:hover { border-color: var(--purple); color: var(--purple); }
     .lang-toggle:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
     .site-footer p { text-align: center; color: var(--muted); font-size: 14px; margin: 0; padding: 0 20px 32px; }
@@ -107,7 +108,8 @@
     }
     @media (max-width: 640px) {
       .wrap { width: min(100% - 24px, var(--max)); }
-      .hero { padding-top: 54px; }
+      .hero { padding-top: 16px; }
+      .topbar { margin-bottom: 0; }
       .facts, .gallery, .journeys, .evidence { grid-template-columns: 1fr; }
       .system-flow { grid-template-columns: 1fr; }
       .decision { grid-template-columns: 54px 1fr; }
@@ -117,9 +119,11 @@
   </style>
 </head>
 <body>
-  <button type="button" class="lang-toggle" id="lang-toggle" lang="en" aria-label="Read in English">English</button>
   <main>
     <header class="hero">
+      <div class="wrap topbar">
+        <button type="button" class="lang-toggle" id="lang-toggle" lang="en" aria-label="Read in English">English</button>
+      </div>
       <div class="wrap hero-grid">
         <div>
           <div class="eyebrow" data-i18n="hero.eyebrow">دراسة حالة · Product Design · Gamification</div>
