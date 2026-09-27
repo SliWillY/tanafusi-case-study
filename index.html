@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="دراسة حالة عربية لمشروع تنافسي: نموذج أولي لنظام تحفيزي صُمم وبُني لبرنامج صيفي من أربعة أسابيع.">
-  <meta property="og:title" content="تنافسي: من تجربة تحفيزية قصيرة إلى نظام تقدم يمتلكه الطالب">
-  <meta property="og:description" content="كيف تحولت فرضية سلوكية إلى نظام رصد وتحفيز قابل للاستخدام والقياس؟">
-  <title>تنافسي | دراسة حالة في تصميم الأنظمة والتلعيب</title>
+  <meta name="description" data-i18n-content="meta.desc" content="دراسة حالة عربية لمشروع تنافسي: نموذج أولي لنظام تحفيزي صُمم وبُني لبرنامج صيفي من أربعة أسابيع.">
+  <meta property="og:title" data-i18n-content="meta.ogTitle" content="تنافسي: من تجربة تحفيزية قصيرة إلى نظام تقدم يمتلكه الطالب">
+  <meta property="og:description" data-i18n-content="meta.ogDesc" content="كيف تحولت فرضية سلوكية إلى نظام رصد وتحفيز قابل للاستخدام والقياس؟">
+  <title data-i18n="meta.title">تنافسي | دراسة حالة في تصميم الأنظمة والتلعيب</title>
   <style>
     :root {
       --ink: #111318;
@@ -40,8 +40,8 @@
     h3 { font-size: 22px; line-height: 1.45; margin: 0 0 8px; }
     p { margin: 0 0 18px; }
     .lead { color: #333846; font-size: clamp(19px, 2.2vw, 25px); max-width: 740px; }
-    .hero-shot { position: relative; padding: 18px 18px 0 0; }
-    .hero-shot::before { content: ""; position: absolute; inset: 0 0 16% 15%; background: var(--purple); z-index: -1; }
+    .hero-shot { position: relative; padding: 18px 0 0; padding-inline-start: 18px; }
+    .hero-shot::before { content: ""; position: absolute; inset-block: 0 16%; inset-inline: 0 15%; background: var(--purple); z-index: -1; }
     .hero-shot img { border: 1px solid #c7cad1; box-shadow: 0 30px 65px rgba(31, 26, 46, .18); }
     .facts { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 64px; }
     .fact { padding: 24px 18px; border-inline-start: 1px solid var(--line); }
@@ -54,7 +54,7 @@
     .soft { background: #f0f1f5; }
     .dark { background: #12141a; color: #fff; }
     .dark .muted { color: #b8becb; }
-    .system-flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; direction: rtl; margin-top: 38px; }
+    .system-flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin-top: 38px; }
     .flow-step { min-height: 160px; padding: 22px 18px; border: 1px solid #aeb3be; border-inline-start: 0; background: var(--surface); position: relative; }
     .flow-step:first-child { border-inline-start: 1px solid #aeb3be; }
     .flow-step::after { content: "←"; position: absolute; inset-inline-end: -12px; top: 50%; transform: translateY(-50%); width: 24px; text-align: center; background: var(--surface); font-weight: 700; }
@@ -71,7 +71,7 @@
     .journeys { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 32px; }
     .journey { padding-top: 24px; border-top: 4px solid var(--blue); }
     .journey:nth-child(2) { border-top-color: var(--purple); }
-    .journey ol { padding: 0 22px 0 0; margin: 18px 0 0; }
+    .journey ol { padding: 0; padding-inline-start: 22px; margin: 18px 0 0; }
     .evidence { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #3a3d45; margin-top: 34px; }
     .evidence-item { background: #171a21; padding: 34px; min-height: 210px; }
     .evidence-item strong { display: block; font-size: 40px; color: #fff; margin-bottom: 12px; }
@@ -82,6 +82,14 @@
     .future-node { min-height: 180px; padding: 28px; background: #fff; color: var(--ink); border: 1px solid #fff; }
     .future-node.core { background: var(--purple); color: #fff; }
     .arrow { font-size: 34px; color: #9ea4b1; }
+    .arrow::before { content: "←"; }
+    html[dir="ltr"] .arrow::before, html[dir="ltr"] .flow-step::after { content: "→"; }
+    html[lang="en"] body { font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; line-height: 1.65; }
+    html[lang="en"] h1 { letter-spacing: -.025em; }
+    .lang-toggle { position: fixed; top: 16px; inset-inline-end: 16px; z-index: 10; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, .92); color: var(--ink); font: inherit; font-size: 14px; font-weight: 700; line-height: 1.4; cursor: pointer; box-shadow: 0 6px 18px rgba(31, 26, 46, .08); backdrop-filter: blur(6px); }
+    .lang-toggle:hover { border-color: var(--purple); color: var(--purple); }
+    .lang-toggle:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+    .site-footer p { text-align: center; color: var(--muted); font-size: 14px; margin: 0; padding: 0 20px 32px; }
     .closing { text-align: center; padding: 110px 0; }
     .closing p { max-width: 760px; margin: 0 auto 26px; font-size: 21px; color: #444a57; }
     .cta { display: inline-block; padding: 14px 24px; background: var(--ink); color: #fff; text-decoration: none; font-weight: 700; }
@@ -95,6 +103,7 @@
       .flow-step::after { display: none; }
       .future-map { grid-template-columns: 1fr; }
       .arrow { transform: rotate(-90deg); text-align: center; }
+      html[dir="ltr"] .arrow { transform: rotate(90deg); }
     }
     @media (max-width: 640px) {
       .wrap { width: min(100% - 24px, var(--max)); }
@@ -108,165 +117,348 @@
   </style>
 </head>
 <body>
+  <button type="button" class="lang-toggle" id="lang-toggle" lang="en" aria-label="Read in English">English</button>
   <main>
     <header class="hero">
       <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow">دراسة حالة · Product Design · Gamification</div>
-          <h1>تنافسي: من تجربة تحفيزية قصيرة إلى نظام تقدم يمتلكه الطالب</h1>
-          <p class="lead">نموذج أولي صممته وبنيته لاختبار كيف تتحول فرضية سلوكية إلى تجربة قابلة للاستخدام والقياس داخل برنامج صيفي مدته أربعة أسابيع.</p>
+          <div class="eyebrow" data-i18n="hero.eyebrow">دراسة حالة · Product Design · Gamification</div>
+          <h1 data-i18n="hero.title">تنافسي: من تجربة تحفيزية قصيرة إلى نظام تقدم يمتلكه الطالب</h1>
+          <p class="lead" data-i18n="hero.lead">نموذج أولي صممته وبنيته لاختبار كيف تتحول فرضية سلوكية إلى تجربة قابلة للاستخدام والقياس داخل برنامج صيفي مدته أربعة أسابيع.</p>
         </div>
         <div class="hero-shot">
-          <img src="assets/screenshots/11-student-dashboard.webp" alt="لوحة طالب تجريبية تعرض المستوى والتقدم والترتيب في نظام تنافسي">
+          <img src="assets/screenshots/11-student-dashboard.webp" data-i18n-alt="hero.alt" alt="لوحة طالب تجريبية تعرض المستوى والتقدم والترتيب في نظام تنافسي">
         </div>
       </div>
-      <div class="wrap facts" aria-label="معلومات المشروع">
-        <div class="fact"><small>المدة</small><strong>4 أسابيع</strong></div>
-        <div class="fact"><small>الحالة</small><strong>نموذج أولي</strong></div>
-        <div class="fact"><small>الدور</small><strong>End-to-end</strong></div>
-        <div class="fact"><small>الجمهور</small><strong>طلاب ومشرفون</strong></div>
-        <div class="fact"><small>المنصة</small><strong>تطبيق ويب</strong></div>
+      <div class="wrap facts" data-i18n-aria-label="facts.label" aria-label="معلومات المشروع">
+        <div class="fact"><small data-i18n="facts.duration">المدة</small><strong data-i18n="facts.durationValue">4 أسابيع</strong></div>
+        <div class="fact"><small data-i18n="facts.status">الحالة</small><strong data-i18n="facts.statusValue">نموذج أولي</strong></div>
+        <div class="fact"><small data-i18n="facts.role">الدور</small><strong>End-to-end</strong></div>
+        <div class="fact"><small data-i18n="facts.audience">الجمهور</small><strong data-i18n="facts.audienceValue">طلاب ومشرفون</strong></div>
+        <div class="fact"><small data-i18n="facts.platform">المنصة</small><strong data-i18n="facts.platformValue">تطبيق ويب</strong></div>
       </div>
     </header>
 
     <section>
       <div class="wrap section-grid">
-        <div class="section-label">01 · السؤال</div>
+        <div class="section-label" data-i18n="q.label">01 · السؤال</div>
         <div>
-          <h2>كيف نبدأ المشاركة عندما تكون مدة التجربة قصيرة جدًا؟</h2>
-          <p>لم يكن التحدي اضافة نقاط وشارات، بل تصميم نظام يجعل الرصد اليومي والتقدم الفردي والانتماء للفريق جزء من تجربة واحدة.</p>
+          <h2 data-i18n="q.title">كيف نبدأ المشاركة عندما تكون مدة التجربة قصيرة جدًا؟</h2>
+          <p data-i18n="q.p1">لم يكن التحدي اضافة نقاط وشارات، بل تصميم نظام يجعل الرصد اليومي والتقدم الفردي والانتماء للفريق جزء من تجربة واحدة.</p>
         </div>
       </div>
     </section>
 
     <section class="soft">
       <div class="wrap section-grid">
-        <div class="section-label">02 · الفرضية</div>
+        <div class="section-label" data-i18n="hyp.label">02 · الفرضية</div>
         <div>
-          <h2>المكافأة تبدأ الحركة، والانتماء يمنحها معنى اجتماعيًا</h2>
-          <p>خلال أربعة أسابيع، استخدمت المكافآت الخارجية والتغذية الفورية كبداية عملية. لم أتعامل معها كحل دائم، بل كطبقة أولى فوق تجربة ركزت على الانتماء: طالب داخل فريق، وفريق داخل كلان، وتقدم فردي يؤثر في جماعته.</p>
-          <p>الهدف التالي هو نقل مركز النظام تدريجيًا نحو الكفاءة والإتقان والاستقلالية، بحيث يصبح الطالب اكثر قدرة على فهم تقدمه واختيار مساره.</p>
+          <h2 data-i18n="hyp.title">المكافأة تبدأ الحركة، والانتماء يمنحها معنى اجتماعيًا</h2>
+          <p data-i18n="hyp.p1">خلال أربعة أسابيع، استخدمت المكافآت الخارجية والتغذية الفورية كبداية عملية. لم أتعامل معها كحل دائم، بل كطبقة أولى فوق تجربة ركزت على الانتماء: طالب داخل فريق، وفريق داخل كلان، وتقدم فردي يؤثر في جماعته.</p>
+          <p data-i18n="hyp.p2">الهدف التالي هو نقل مركز النظام تدريجيًا نحو الكفاءة والإتقان والاستقلالية، بحيث يصبح الطالب اكثر قدرة على فهم تقدمه واختيار مساره.</p>
         </div>
       </div>
     </section>
 
     <section>
       <div class="wrap">
-        <div class="section-label">03 · تصميم النظام</div>
-        <h2>حلقة تحفيز تبدأ من فعل يومي وتنتهي بصورة أوضح للتقدم</h2>
-        <div class="system-flow" aria-label="خريطة تدفق نظام تنافسي">
-          <div class="flow-step"><div class="flow-number">01</div><h3>فعل يومي</h3><p>حضور، تسميع أو مشاركة.</p></div>
-          <div class="flow-step"><div class="flow-number">02</div><h3>رصد مرن</h3><p>فئات وخيارات يحددها البرنامج.</p></div>
-          <div class="flow-step"><div class="flow-number">03</div><h3>تغذية راجعة</h3><p>نقاط وعملات وسلسلة استمرارية.</p></div>
-          <div class="flow-step"><div class="flow-number">04</div><h3>تقدم فردي</h3><p>مستوى وتحليلات وسجل نشاط.</p></div>
-          <div class="flow-step"><div class="flow-number">05</div><h3>انتماء جماعي</h3><p>فرق وكلانات وترتيب عادل.</p></div>
-          <div class="flow-step"><div class="flow-number">06</div><h3>اختيار ومكافأة</h3><p>متجر وتخصيص ورؤية مستقبلية.</p></div>
+        <div class="section-label" data-i18n="sys.label">03 · تصميم النظام</div>
+        <h2 data-i18n="sys.title">حلقة تحفيز تبدأ من فعل يومي وتنتهي بصورة أوضح للتقدم</h2>
+        <div class="system-flow" data-i18n-aria-label="sys.aria" aria-label="خريطة تدفق نظام تنافسي">
+          <div class="flow-step"><div class="flow-number">01</div><h3 data-i18n="sys.s1t">فعل يومي</h3><p data-i18n="sys.s1p">حضور، تسميع أو مشاركة.</p></div>
+          <div class="flow-step"><div class="flow-number">02</div><h3 data-i18n="sys.s2t">رصد مرن</h3><p data-i18n="sys.s2p">فئات وخيارات يحددها البرنامج.</p></div>
+          <div class="flow-step"><div class="flow-number">03</div><h3 data-i18n="sys.s3t">تغذية راجعة</h3><p data-i18n="sys.s3p">نقاط وعملات وسلسلة استمرارية.</p></div>
+          <div class="flow-step"><div class="flow-number">04</div><h3 data-i18n="sys.s4t">تقدم فردي</h3><p data-i18n="sys.s4p">مستوى وتحليلات وسجل نشاط.</p></div>
+          <div class="flow-step"><div class="flow-number">05</div><h3 data-i18n="sys.s5t">انتماء جماعي</h3><p data-i18n="sys.s5p">فرق وكلانات وترتيب عادل.</p></div>
+          <div class="flow-step"><div class="flow-number">06</div><h3 data-i18n="sys.s6t">اختيار ومكافأة</h3><p data-i18n="sys.s6p">متجر وتخصيص ورؤية مستقبلية.</p></div>
         </div>
       </div>
     </section>
 
     <section class="soft">
       <div class="wrap">
-        <div class="section-label">04 · الرحلات الأساسية</div>
-        <h2>واجهتان مختلفتان تتشاركان النظام نفسه</h2>
+        <div class="section-label" data-i18n="jr.label">04 · الرحلات الأساسية</div>
+        <h2 data-i18n="jr.title">واجهتان مختلفتان تتشاركان النظام نفسه</h2>
         <div class="journeys">
           <div class="journey">
-            <h3>رحلة المشرف</h3>
-            <ol><li>اختيار اليوم والفئة.</li><li>رصد مجموعة كبيرة بسرعة.</li><li>حفظ التغييرات دون فقدان العمل.</li><li>قراءة التحليلات والاستثناءات.</li></ol>
+            <h3 data-i18n="jr.adminTitle">رحلة المشرف</h3>
+            <ol data-i18n="jr.adminSteps"><li>اختيار اليوم والفئة.</li><li>رصد مجموعة كبيرة بسرعة.</li><li>حفظ التغييرات دون فقدان العمل.</li><li>قراءة التحليلات والاستثناءات.</li></ol>
           </div>
           <div class="journey">
-            <h3>رحلة الطالب</h3>
-            <ol><li>فهم المستوى والسلسلة.</li><li>رؤية أثر النشاط في الفريق.</li><li>مقارنة التقدم دون اختزاله في ترتيب فقط.</li><li>استخدام العملات واختيار المكافآت.</li></ol>
+            <h3 data-i18n="jr.studentTitle">رحلة الطالب</h3>
+            <ol data-i18n="jr.studentSteps"><li>فهم المستوى والسلسلة.</li><li>رؤية أثر النشاط في الفريق.</li><li>مقارنة التقدم دون اختزاله في ترتيب فقط.</li><li>استخدام العملات واختيار المكافآت.</li></ol>
           </div>
         </div>
         <div class="gallery">
-          <figure><img src="assets/screenshots/02-daily-logging.webp" alt="صفحة الرصد اليومي ببيانات طلاب تجريبية"><figcaption>الرصد اليومي: كثافة تشغيلية عالية مع فئات قابلة للإعداد.</figcaption></figure>
-          <figure><img src="assets/screenshots/03-student-analytics.webp" alt="تحليلات رصد طالب تجريبي داخل صفحة الإدارة"><figcaption>التحليلات: توزيع بصري للفئات والخيارات والأيام غير المرصودة.</figcaption></figure>
-          <figure><img src="assets/screenshots/04-admin-leaderboards.webp" alt="ترتيب الطلاب والفرق والكلانات في لوحة الإدارة"><figcaption>الترتيب متعدد المستويات: فرد، فريق، وكلان.</figcaption></figure>
-          <figure><img src="assets/screenshots/06-admin-chat.webp" alt="واجهة محادثة الكلانات للإدارة ببيانات تجريبية"><figcaption>المحادثات: مساحة للانتماء والتواصل داخل كل مجموعة.</figcaption></figure>
+          <figure><img src="assets/screenshots/02-daily-logging.webp" data-i18n-alt="jr.img1Alt" alt="صفحة الرصد اليومي ببيانات طلاب تجريبية"><figcaption data-i18n="jr.img1Cap">الرصد اليومي: كثافة تشغيلية عالية مع فئات قابلة للإعداد.</figcaption></figure>
+          <figure><img src="assets/screenshots/03-student-analytics.webp" data-i18n-alt="jr.img2Alt" alt="تحليلات رصد طالب تجريبي داخل صفحة الإدارة"><figcaption data-i18n="jr.img2Cap">التحليلات: توزيع بصري للفئات والخيارات والأيام غير المرصودة.</figcaption></figure>
+          <figure><img src="assets/screenshots/04-admin-leaderboards.webp" data-i18n-alt="jr.img3Alt" alt="ترتيب الطلاب والفرق والكلانات في لوحة الإدارة"><figcaption data-i18n="jr.img3Cap">الترتيب متعدد المستويات: فرد، فريق، وكلان.</figcaption></figure>
+          <figure><img src="assets/screenshots/06-admin-chat.webp" data-i18n-alt="jr.img4Alt" alt="واجهة محادثة الكلانات للإدارة ببيانات تجريبية"><figcaption data-i18n="jr.img4Cap">المحادثات: مساحة للانتماء والتواصل داخل كل مجموعة.</figcaption></figure>
         </div>
       </div>
     </section>
 
     <section>
       <div class="wrap section-grid">
-        <div class="section-label">05 · قرارات التصميم</div>
+        <div class="section-label" data-i18n="dec.label">05 · قرارات التصميم</div>
         <div class="decision-list">
-          <div class="decision"><div class="decision-index">01</div><h3>العدل قبل الترتيب</h3><p>يتم توازن نقاط الفرق والكلانات حسب عدد الأعضاء المؤهلين في اليوم، ويستبعد الغياب بعذر من حساب المجموعة دون إلغاء سجل الطالب الشخصي.</p></div>
-          <div class="decision"><div class="decision-index">02</div><h3>الرصد قابل للتكيف</h3><p>يحدد كل برنامج فئاته وخياراته وألوانه وقيمه بدل فرض تعريف واحد للنجاح على جميع السياقات.</p></div>
-          <div class="decision"><div class="decision-index">03</div><h3>الخصوصية افتراضيا</h3><p>لا يحتاج النموذج اي من بيانات الطالب سوى الاسم فقط, مثل بريد الطالب أو بيانات حساسة. الحسابات بسيطة.</p></div>
-          <div class="decision"><div class="decision-index">04</div><h3>نظامان اقتصاديان</h3><p>تفصل النقاط التقدم والترتيب عن العملات القابلة للصرف، حتى لا يؤدي شراء المكافأة إلى خفض مستوى الطالب.</p></div>
+          <div class="decision"><div class="decision-index">01</div><h3 data-i18n="dec.d1t">العدل قبل الترتيب</h3><p data-i18n="dec.d1p">يتم توازن نقاط الفرق والكلانات حسب عدد الأعضاء المؤهلين في اليوم، ويستبعد الغياب بعذر من حساب المجموعة دون إلغاء سجل الطالب الشخصي.</p></div>
+          <div class="decision"><div class="decision-index">02</div><h3 data-i18n="dec.d2t">الرصد قابل للتكيف</h3><p data-i18n="dec.d2p">يحدد كل برنامج فئاته وخياراته وألوانه وقيمه بدل فرض تعريف واحد للنجاح على جميع السياقات.</p></div>
+          <div class="decision"><div class="decision-index">03</div><h3 data-i18n="dec.d3t">الخصوصية افتراضيا</h3><p data-i18n="dec.d3p">لا يحتاج النموذج اي من بيانات الطالب سوى الاسم فقط, مثل بريد الطالب أو بيانات حساسة. الحسابات بسيطة.</p></div>
+          <div class="decision"><div class="decision-index">04</div><h3 data-i18n="dec.d4t">نظامان اقتصاديان</h3><p data-i18n="dec.d4p">تفصل النقاط التقدم والترتيب عن العملات القابلة للصرف، حتى لا يؤدي شراء المكافأة إلى خفض مستوى الطالب.</p></div>
         </div>
       </div>
     </section>
 
     <section class="dark">
       <div class="wrap">
-        <div class="section-label">06 · التنفيذ</div>
-        <h2>من فرضية سلوكية إلى نموذج ويب يعمل فعليًا</h2>
-        <p class="muted">بنيت النظام باستخدام Flask وPostgreSQL وJavaScript، مع عزل بيانات كل برنامج، ورصد وتحليلات، ومحادثات فورية، ومتجر، ومستويات وسلاسل استمرارية. لم يكن الهدف إظهار أكبر عدد من الميزات، بل اختبار الترابط بين القرارات السلوكية والتشغيلية.</p>
+        <div class="section-label" data-i18n="build.label">06 · التنفيذ</div>
+        <h2 data-i18n="build.title">من فرضية سلوكية إلى نموذج ويب يعمل فعليًا</h2>
+        <p class="muted" data-i18n="build.p1">بنيت النظام باستخدام Flask وPostgreSQL وJavaScript، مع عزل بيانات كل برنامج، ورصد وتحليلات، ومحادثات فورية، ومتجر، ومستويات وسلاسل استمرارية. لم يكن الهدف إظهار أكبر عدد من الميزات، بل اختبار الترابط بين القرارات السلوكية والتشغيلية.</p>
         <div class="evidence">
-          <div class="evidence-item"><strong>4 أسابيع</strong><span>قيد زمني شكّل استراتيجية التحفيز.</span></div>
-          <div class="evidence-item"><strong>دور فردي</strong><span>بحث، تصميم نظام، UX، تنفيذ واختبار.</span></div>
-          <div class="evidence-item"><strong>بيانات آمنة</strong><span>لا بريد الكتروني أو بيانات حساسة للطالب وللمسؤوول.</span></div>
+          <div class="evidence-item"><strong data-i18n="build.e1t">4 أسابيع</strong><span data-i18n="build.e1p">قيد زمني شكّل استراتيجية التحفيز.</span></div>
+          <div class="evidence-item"><strong data-i18n="build.e2t">دور فردي</strong><span data-i18n="build.e2p">بحث، تصميم نظام، UX، تنفيذ واختبار.</span></div>
+          <div class="evidence-item"><strong data-i18n="build.e3t">بيانات آمنة</strong><span data-i18n="build.e3p">لا بريد الكتروني أو بيانات حساسة للطالب وللمسؤوول.</span></div>
         </div>
       </div>
     </section>
 
     <section>
       <div class="wrap section-grid">
-        <div class="section-label">07 · التعلم والحدود</div>
+        <div class="section-label" data-i18n="learn.label">07 · التعلم والحدود</div>
         <div>
-          <h2>النموذج يثبت قابلية الفكرة للتجربة، لا أثرها التعليمي طويل المدى</h2>
+          <h2 data-i18n="learn.title">النموذج يثبت قابلية الفكرة للتجربة، لا أثرها التعليمي طويل المدى</h2>
           <div class="limits">
-            <div><h3>ما تعلمته</h3><p>التحفيز الخارجي والانتماء يخلقان نقطة دخول واضحة. كما أن العدالة وجودة أدوات المشرف جزء من تجربة التحفيز، وليستا مشكلة خلفية.</p></div>
-            <div><h3>ما لم يتم اختباره بعد</h3><p>الاستدامة بعد انتهاء المكافآت، أثر النظام في التعلم، ودور الاستقلالية والاختيار عبر مدة أطول ومؤسسات متعددة.</p></div>
+            <div><h3 data-i18n="learn.l1t">ما تعلمته</h3><p data-i18n="learn.l1p">التحفيز الخارجي والانتماء يخلقان نقطة دخول واضحة. كما أن العدالة وجودة أدوات المشرف جزء من تجربة التحفيز، وليستا مشكلة خلفية.</p></div>
+            <div><h3 data-i18n="learn.l2t">ما لم يتم اختباره بعد</h3><p data-i18n="learn.l2p">الاستدامة بعد انتهاء المكافآت، أثر النظام في التعلم، ودور الاستقلالية والاختيار عبر مدة أطول ومؤسسات متعددة.</p></div>
           </div>
-          <div class="privacy-note">لم أدرج أرقام أثر أو شهادات غير موثقة. تُضاف نتائج الاستخدام فقط بعد التحقق من تعريفها والحصول على الموافقات المناسبة.</div>
+          <div class="privacy-note" data-i18n="learn.note">لم أدرج أرقام أثر أو شهادات غير موثقة. تُضاف نتائج الاستخدام فقط بعد التحقق من تعريفها والحصول على الموافقات المناسبة.</div>
         </div>
       </div>
     </section>
 
     <section class="dark">
       <div class="wrap">
-        <div class="section-label">08 · الرؤية المستقبلية</div>
-        <h2>التقدم يجب أن يتبع الطالب، لا المؤسسة</h2>
-        <p class="muted">بدل أن يبدأ الطالب من الصفر مع كل مدرسة أو برنامج، يمتلك حساب وهوية تقدم واحدة. تنضم المؤسسات إلى هذه الهوية وتضيف سياقات تعلم مختلفة، بينما تتحول الإنجازات إلى شخصية ومساحة رقمية قابلة للتخصيص.</p>
-        <div class="future-map" aria-label="تصور مستقبل نظام تنافسي">
-          <div class="future-node"><h3>برامج متعددة</h3><p>مدرسة، برنامج قرآن، نادي أو نشاط قصير.</p></div>
-          <div class="arrow">←</div>
-          <div class="future-node core"><h3>هوية الطالب</h3><p>تقدم محمول وسجل مفهوم للإنجازات.</p></div>
-          <div class="arrow">←</div>
-          <div class="future-node"><h3>عالم شخصي</h3><p>شخصية ومنزل وتخصيص يبني ارتباطًا طويل المدى.</p></div>
+        <div class="section-label" data-i18n="future.label">08 · الرؤية المستقبلية</div>
+        <h2 data-i18n="future.title">التقدم يجب أن يتبع الطالب، لا المؤسسة</h2>
+        <p class="muted" data-i18n="future.p1">بدل أن يبدأ الطالب من الصفر مع كل مدرسة أو برنامج، يمتلك حساب وهوية تقدم واحدة. تنضم المؤسسات إلى هذه الهوية وتضيف سياقات تعلم مختلفة، بينما تتحول الإنجازات إلى شخصية ومساحة رقمية قابلة للتخصيص.</p>
+        <div class="future-map" data-i18n-aria-label="future.aria" aria-label="تصور مستقبل نظام تنافسي">
+          <div class="future-node"><h3 data-i18n="future.n1t">برامج متعددة</h3><p data-i18n="future.n1p">مدرسة، برنامج قرآن، نادي أو نشاط قصير.</p></div>
+          <div class="arrow" aria-hidden="true"></div>
+          <div class="future-node core"><h3 data-i18n="future.n2t">هوية الطالب</h3><p data-i18n="future.n2p">تقدم محمول وسجل مفهوم للإنجازات.</p></div>
+          <div class="arrow" aria-hidden="true"></div>
+          <div class="future-node"><h3 data-i18n="future.n3t">عالم شخصي</h3><p data-i18n="future.n3p">شخصية ومنزل وتخصيص يبني ارتباطًا طويل المدى.</p></div>
         </div>
       </div>
     </section>
 
     <section class="soft">
       <div class="wrap">
-        <div class="section-label">09 · التجربة البصرية</div>
-        <h2>التقدم الفردي والجماعي يظهران في مساحة واحدة</h2>
+        <div class="section-label" data-i18n="vis.label">09 · التجربة البصرية</div>
+        <h2 data-i18n="vis.title">التقدم الفردي والجماعي يظهران في مساحة واحدة</h2>
         <div class="gallery">
-          <figure><img src="assets/screenshots/08-student-leaderboard.webp" alt="واجهة ترتيب الطلاب والكلانات من منظور الطالب"><figcaption>المقارنة ليست فردية فقط؛ تظهر الجماعة والهوية الاجتماعية.</figcaption></figure>
-          <figure><img src="assets/screenshots/05-clans-and-squads.webp" alt="إدارة الكلانات والفرق في نظام تنافسي"><figcaption>هيكل كلان وفريق يترجم الانتماء إلى بنية تشغيلية.</figcaption></figure>
-          <figure><img src="assets/screenshots/09-student-store.webp" alt="متجر المكافآت في حساب طالب تجريبي"><figcaption>العملات تمنح مساحة للاختيار دون خفض نقاط التقدم.</figcaption></figure>
-          <figure><img src="assets/screenshots/10-student-clans.webp" alt="دليل الكلانات والفرق من حساب طالب تجريبي"><figcaption>عرض المجتمع يساعد الطالب على فهم مكانه داخل النظام.</figcaption></figure>
+          <figure><img src="assets/screenshots/08-student-leaderboard.webp" data-i18n-alt="vis.img1Alt" alt="واجهة ترتيب الطلاب والكلانات من منظور الطالب"><figcaption data-i18n="vis.img1Cap">المقارنة ليست فردية فقط؛ تظهر الجماعة والهوية الاجتماعية.</figcaption></figure>
+          <figure><img src="assets/screenshots/05-clans-and-squads.webp" data-i18n-alt="vis.img2Alt" alt="إدارة الكلانات والفرق في نظام تنافسي"><figcaption data-i18n="vis.img2Cap">هيكل كلان وفريق يترجم الانتماء إلى بنية تشغيلية.</figcaption></figure>
+          <figure><img src="assets/screenshots/09-student-store.webp" data-i18n-alt="vis.img3Alt" alt="متجر المكافآت في حساب طالب تجريبي"><figcaption data-i18n="vis.img3Cap">العملات تمنح مساحة للاختيار دون خفض نقاط التقدم.</figcaption></figure>
+          <figure><img src="assets/screenshots/10-student-clans.webp" data-i18n-alt="vis.img4Alt" alt="دليل الكلانات والفرق من حساب طالب تجريبي"><figcaption data-i18n="vis.img4Cap">عرض المجتمع يساعد الطالب على فهم مكانه داخل النظام.</figcaption></figure>
         </div>
       </div>
     </section>
 
     <footer class="closing">
       <div class="wrap">
-        <div class="eyebrow">الخلاصة</div>
-        <h2>هذا المشروع يوضح كيف أفكر في الأنظمة، لا كيف أزين الواجهات فقط</h2>
-        <p>تعلمت في هذا المشروع عن Product Design وUX وتصميم الأنظمة والتلعيب، حيث يمكن تحويل فهم الدوافع البشرية إلى منتجات عملية ومسؤولة.</p>
+        <div class="eyebrow" data-i18n="close.eyebrow">الخلاصة</div>
+        <h2 data-i18n="close.title">هذا المشروع يوضح كيف أفكر في الأنظمة، لا كيف أزين الواجهات فقط</h2>
+        <p data-i18n="close.p1">تعلمت في هذا المشروع عن Product Design وUX وتصميم الأنظمة والتلعيب، حيث يمكن تحويل فهم الدوافع البشرية إلى منتجات عملية ومسؤولة.</p>
       </div>
     </footer>
   </main>
   <!-- أضف اقتباسين موثقين هنا فقط بعد إخفاء الهوية والحصول على موافقة النشر. -->
-</body>
 
-<footer>
-  <p style="text-align: center;">© 2026 سلمان سيف نظري. جميع الحقوق محفوظة.</p>
-</footer>
+  <footer class="site-footer">
+    <p data-i18n="footer.copy">© 2026 سلمان سيف نظري. جميع الحقوق محفوظة.</p>
+  </footer>
+
+  <script>
+    (function () {
+      // English copy. The Arabic stays in the markup and is captured on load, so it only lives in one place.
+      var en = {
+        "meta.title": "Tanafusi | A Case Study in Systems Design &amp; Gamification",
+        "meta.desc": "A case study of Tanafusi: a motivation system prototype I designed and built for a four-week summer program.",
+        "meta.ogTitle": "Tanafusi: from a short motivation experiment to a progress system students own",
+        "meta.ogDesc": "How a behavioral hypothesis became a logging and motivation system people could actually use and measure.",
+
+        "hero.eyebrow": "Case study · Product Design · Gamification",
+        "hero.title": "Tanafusi: from a short motivation experiment to a progress system students own",
+        "hero.lead": "A prototype I designed and built to test how a behavioral hypothesis can become a usable, measurable experience inside a four-week summer program.",
+        "hero.alt": "Sample student dashboard in Tanafusi showing level, progress and ranking",
+        "facts.label": "Project details",
+        "facts.duration": "Duration",
+        "facts.durationValue": "4 weeks",
+        "facts.status": "Status",
+        "facts.statusValue": "Prototype",
+        "facts.role": "Role",
+        "facts.audience": "Audience",
+        "facts.audienceValue": "Students &amp; supervisors",
+        "facts.platform": "Platform",
+        "facts.platformValue": "Web app",
+
+        "q.label": "01 · The question",
+        "q.title": "How do you get people to participate when the program is this short?",
+        "q.p1": "The challenge wasn’t adding points and badges. It was designing a system where daily logging, personal progress and belonging to a squad all feel like one experience.",
+
+        "hyp.label": "02 · The hypothesis",
+        "hyp.title": "Rewards get things moving. Belonging gives them social meaning.",
+        "hyp.p1": "With only four weeks, I used extrinsic rewards and instant feedback as a practical starting point. I didn’t treat them as a permanent solution, but as a first layer on top of an experience built around belonging: a student inside a squad, a squad inside a clan, and personal progress that affects the whole group.",
+        "hyp.p2": "The next step is to gradually shift the center of the system toward competence, mastery and autonomy, so students get better at understanding their own progress and choosing their own path.",
+
+        "sys.label": "03 · System design",
+        "sys.title": "A motivation loop that starts with a daily action and ends with a clearer picture of progress",
+        "sys.aria": "Tanafusi system flow",
+        "sys.s1t": "Daily action",
+        "sys.s1p": "Attendance, Quran recitation or participation.",
+        "sys.s2t": "Flexible logging",
+        "sys.s2p": "Categories and options set by each program.",
+        "sys.s3t": "Feedback",
+        "sys.s3p": "Points, coins and streaks.",
+        "sys.s4t": "Personal progress",
+        "sys.s4p": "Levels, analytics and an activity log.",
+        "sys.s5t": "Group belonging",
+        "sys.s5p": "Squads, clans and fair rankings.",
+        "sys.s6t": "Choice &amp; rewards",
+        "sys.s6p": "A store, customization and a longer-term vision.",
+
+        "jr.label": "04 · Core journeys",
+        "jr.title": "Two different interfaces, one shared system",
+        "jr.adminTitle": "Supervisor journey",
+        "jr.adminSteps": "<li>Pick the day and the category.</li><li>Log a large group quickly.</li><li>Save changes without losing work.</li><li>Read the analytics and spot exceptions.</li>",
+        "jr.studentTitle": "Student journey",
+        "jr.studentSteps": "<li>Understand my level and streak.</li><li>See how my activity affects my squad.</li><li>Compare progress without reducing it to a rank.</li><li>Spend coins and choose rewards.</li>",
+        "jr.img1Alt": "Daily logging page with sample student data",
+        "jr.img1Cap": "Daily logging: a lot of operational work, with categories each program can configure.",
+        "jr.img2Alt": "A sample student’s logging analytics in the admin panel",
+        "jr.img2Cap": "Analytics: a visual breakdown of categories, options and days with nothing logged.",
+        "jr.img3Alt": "Student, squad and clan leaderboards in the admin dashboard",
+        "jr.img3Cap": "Multi-level rankings: individual, squad and clan.",
+        "jr.img4Alt": "Admin view of clan chat with sample data",
+        "jr.img4Cap": "Chat: a space for belonging and communication inside each group.",
+
+        "dec.label": "05 · Design decisions",
+        "dec.d1t": "Fairness before ranking",
+        "dec.d1p": "Squad and clan points are balanced by the number of eligible members each day. Excused absences are left out of the group’s score without erasing the student’s personal record.",
+        "dec.d2t": "Logging that adapts",
+        "dec.d2p": "Each program defines its own categories, options, colors and values, instead of forcing one definition of success on every context.",
+        "dec.d3t": "Private by default",
+        "dec.d3p": "The prototype only needs the student’s name. No email and no sensitive data. Accounts are kept simple.",
+        "dec.d4t": "Two separate economies",
+        "dec.d4p": "Points track progress and ranking, while coins are for spending. That way, buying a reward never lowers a student’s level.",
+
+        "build.label": "06 · Build",
+        "build.title": "From a behavioral hypothesis to a working web prototype",
+        "build.p1": "I built the system with Flask, PostgreSQL and JavaScript: isolated data for each program, logging and analytics, real-time chat, a store, levels and streaks. The goal wasn’t to show as many features as possible, but to test how the behavioral and operational decisions work together.",
+        "build.e1t": "4 weeks",
+        "build.e1p": "A time constraint that shaped the whole motivation strategy.",
+        "build.e2t": "Solo project",
+        "build.e2p": "Research, system design, UX, development and testing.",
+        "build.e3t": "Safe data",
+        "build.e3p": "No email or sensitive data for students or admins.",
+
+        "learn.label": "07 · Learnings &amp; limits",
+        "learn.title": "The prototype shows the idea can be tested, not its long-term effect on learning",
+        "learn.l1t": "What I learned",
+        "learn.l1p": "Extrinsic motivation and belonging create a clear entry point. Fairness and good supervisor tools are part of the motivation experience itself, not a back-end detail.",
+        "learn.l2t": "What hasn’t been tested yet",
+        "learn.l2p": "Whether motivation lasts once the rewards stop, the system’s effect on actual learning, and the role of autonomy and choice over a longer period and across several institutions.",
+        "learn.note": "I haven’t included impact numbers or unverified testimonials. Usage results will only be added once they’re clearly defined, verified and published with the right consent.",
+
+        "future.label": "08 · Future vision",
+        "future.title": "Progress should follow the student, not the institution",
+        "future.p1": "Instead of starting from zero at every new school or program, the student owns one account and a single progress identity. Institutions join that identity and add their own learning contexts, while achievements turn into a character and a personal digital space the student can customize.",
+        "future.aria": "Future vision for Tanafusi",
+        "future.n1t": "Multiple programs",
+        "future.n1p": "A school, a Quran program, a club or a short activity.",
+        "future.n2t": "Student identity",
+        "future.n2p": "Portable progress and a clear record of achievements.",
+        "future.n3t": "Personal world",
+        "future.n3p": "A character, a home and customization that build long-term attachment.",
+
+        "vis.label": "09 · Visual experience",
+        "vis.title": "Personal and group progress in one place",
+        "vis.img1Alt": "Student and clan leaderboards from the student’s view",
+        "vis.img1Cap": "Comparison isn’t only individual; the group and its social identity are visible too.",
+        "vis.img2Alt": "Managing clans and squads in Tanafusi",
+        "vis.img2Cap": "The clan and squad structure turns belonging into something the program can actually run.",
+        "vis.img3Alt": "Rewards store in a sample student account",
+        "vis.img3Cap": "Coins give students room to choose without costing them progress points.",
+        "vis.img4Alt": "Clan and squad directory from a sample student account",
+        "vis.img4Cap": "Seeing the whole community helps students understand where they fit in the system.",
+
+        "close.eyebrow": "Takeaway",
+        "close.title": "This project shows how I think about systems, not just how I decorate interfaces",
+        "close.p1": "This project taught me a lot about product design, UX, systems design and gamification, and how an understanding of human motivation can be turned into practical, responsible products.",
+
+        "footer.copy": "© 2026 Salman Saif Nazari. All rights reserved."
+      };
+
+      var root = document.documentElement;
+      var toggle = document.getElementById("lang-toggle");
+      var attrs = ["alt", "aria-label", "content"];
+      var ar = {};
+
+      // Capture the Arabic originals once.
+      document.querySelectorAll("[data-i18n]").forEach(function (el) {
+        ar[el.getAttribute("data-i18n")] = el.innerHTML;
+      });
+      attrs.forEach(function (attr) {
+        document.querySelectorAll("[data-i18n-" + attr + "]").forEach(function (el) {
+          ar[el.getAttribute("data-i18n-" + attr)] = el.getAttribute(attr);
+        });
+      });
+
+      function apply(lang) {
+        var dict = lang === "en" ? en : ar;
+        root.lang = lang;
+        root.dir = lang === "en" ? "ltr" : "rtl";
+        document.querySelectorAll("[data-i18n]").forEach(function (el) {
+          var value = dict[el.getAttribute("data-i18n")];
+          if (value !== undefined) el.innerHTML = value;
+        });
+        attrs.forEach(function (attr) {
+          document.querySelectorAll("[data-i18n-" + attr + "]").forEach(function (el) {
+            var value = dict[el.getAttribute("data-i18n-" + attr)];
+            if (value !== undefined) el.setAttribute(attr, value.replace(/&amp;/g, "&"));
+          });
+        });
+        document.title = document.querySelector("title").textContent;
+
+        // The button always offers the other language, written in that language.
+        var other = lang === "en" ? "ar" : "en";
+        toggle.textContent = other === "en" ? "English" : "العربية";
+        toggle.lang = other;
+        toggle.setAttribute("aria-label", other === "en" ? "Read in English" : "اقرأ بالعربية");
+
+        try { localStorage.setItem("tanafusi-lang", lang); } catch (e) {}
+        var url = new URL(window.location.href);
+        if (lang === "en") url.searchParams.set("lang", "en"); else url.searchParams.delete("lang");
+        history.replaceState(null, "", url);
+      }
+
+      function initialLang() {
+        var param = new URLSearchParams(window.location.search).get("lang");
+        if (param === "en" || param === "ar") return param;
+        try {
+          var saved = localStorage.getItem("tanafusi-lang");
+          if (saved === "en" || saved === "ar") return saved;
+        } catch (e) {}
+        return (navigator.language || "ar").toLowerCase().indexOf("ar") === 0 ? "ar" : "en";
+      }
+
+      toggle.addEventListener("click", function () {
+        apply(root.lang === "en" ? "ar" : "en");
+      });
+
+      apply(initialLang());
+    })();
+  </script>
+</body>
 </html>
